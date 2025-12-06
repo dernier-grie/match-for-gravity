@@ -1,6 +1,7 @@
 require "src/Dependencies"
 
 local screen = Screen:new()
+local world = World:new()
 
 function love.load()
     love.window.setTitle(SCREEN_TITLE)
@@ -13,8 +14,7 @@ end
 
 function love.draw()
     screen:start()
-
-    love.graphics.draw(Texture, QuadsAlphabet["a"], 0, 0)
+    world:draw()
 
     screen:finish()
 end
