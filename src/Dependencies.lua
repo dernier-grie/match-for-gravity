@@ -3,6 +3,7 @@ require "src/globals"
 
 require "src/Screen"
 require "src/World"
+require "src/Target"
 
 require "src/StateMachine"
 require "src/states/BaseState"
