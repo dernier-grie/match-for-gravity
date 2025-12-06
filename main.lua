@@ -8,10 +8,20 @@ function love.load()
     love.window.setMode(SCREEN_WIDTH, SCREEN_HEIGHT)
 
     love.keyboard.keypressed = {}
+
+    GStateMachine =
+        StateMachine:new(
+            {
+                ["title"] = function()
+                    return TitleState:new()
+                end,
+            }
+        )
+    GStateMachine:change("title")
 end
 
 function love.update(dt)
-    -- update logic
+    GStateMachine:update(dt)
 
     love.keyboard.keypressed = {}
 end
@@ -19,6 +29,8 @@ end
 function love.draw()
     screen:start()
     world:draw()
+
+    GStateMachine:draw()
 
     screen:finish()
 end
