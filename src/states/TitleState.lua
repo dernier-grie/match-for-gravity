@@ -34,6 +34,9 @@ function TitleState:enter()
 end
 
 function TitleState:update(dt)
+    if love.keyboard.waspressed("space") then
+        GStateMachine:change("play")
+    end
 end
 
 function TitleState:draw()

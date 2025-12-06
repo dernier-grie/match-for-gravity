@@ -15,9 +15,12 @@ function love.load()
                 ["title"] = function()
                     return TitleState:new()
                 end,
+                ["play"] = function()
+                    return PlayState:new()
+                end,
             }
         )
-    GStateMachine:change("title")
+    GStateMachine:change("play")
 end
 
 function love.update(dt)
