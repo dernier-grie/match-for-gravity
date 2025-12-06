@@ -4,6 +4,7 @@ function PlayState:enter()
     -- 1 column and row for the world outline
     local columns, rows = COLUMNS - 2, ROWS - 2
 
+    self.minRow = 2
     self.columns = columns
     self.rows = rows
     self.column = 1
@@ -11,6 +12,7 @@ function PlayState:enter()
 
     self.currentTarget = Target:new(self.column, self.row)
     self.previousTarget = nil
+    self.score = Score:new(0)
 
     self.state = "select"
 end
@@ -25,7 +27,7 @@ function PlayState:update(dt)
     end
 
     if love.keyboard.waspressed("up") then
-        self.row = math.max(1, self.row - 1)
+        self.row = math.max(self.minRow, self.row - 1)
         self.currentTarget["row"] = self.row
     elseif love.keyboard.waspressed("down") then
         self.row = math.min(self.rows, self.row + 1)
@@ -52,7 +54,9 @@ end
 function PlayState:draw()
     love.graphics.setColor(1, 1, 1, 1)
 
+    self.score:draw()
     self.currentTarget:draw()
+
     if self.previousTarget then
         self.previousTarget:draw()
     end
