@@ -24,6 +24,8 @@ function love.load()
 end
 
 function love.update(dt)
+    screen:update(dt)
+
     GStateMachine:update(dt)
 
     love.keyboard.keypressed = {}
