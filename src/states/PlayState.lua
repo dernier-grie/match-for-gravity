@@ -15,6 +15,11 @@ function PlayState:enter()
     self.score = Score:new(0)
 
     self.state = "select"
+
+    self.blocks = {}
+    for i = 1, 4 do
+        table.insert(self.blocks, Block:new(i, self.rows, 1, i))
+    end
 end
 
 function PlayState:update(dt)
@@ -54,9 +59,13 @@ end
 function PlayState:draw()
     love.graphics.setColor(1, 1, 1, 1)
 
-    self.score:draw()
-    self.currentTarget:draw()
+    for _, block in pairs(self.blocks) do
+        block:draw()
+    end
 
+    self.score:draw()
+
+    self.currentTarget:draw()
     if self.previousTarget then
         self.previousTarget:draw()
     end

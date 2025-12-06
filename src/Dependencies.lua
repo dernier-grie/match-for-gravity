@@ -5,6 +5,7 @@ require "src/Screen"
 require "src/World"
 require "src/Score"
 require "src/Target"
+require "src/Block"
 
 require "src/StateMachine"
 require "src/states/BaseState"
